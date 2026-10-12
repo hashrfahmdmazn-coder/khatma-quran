@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#064e3b">
+<title>ختمة القرآن الكريم الجماعية</title>
+<meta name="description" content="منصة لإنشاء وإدارة ختمات القرآن الكريم الجماعية — صدقة على أرواح أحبابنا وأمواتنا.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Tajawal', 'system-ui', 'sans-serif'],
+        quran: ['Amiri', 'serif']
+      },
+      colors: {
+        brand: {
+          50: '#ecfdf5', 100: '#d1fae5', 200: '#a7f3d0', 300: '#6ee7b7',
+          400: '#34d399', 500: '#10b981', 600: '#059669', 700: '#047857',
+          800: '#065f46', 900: '#064e3b', 950: '#022c22'
+        },
+        gold: {
+          100: '#fdf6e3', 200: '#f7e7b4', 300: '#f0d78a', 400: '#e6c25c',
+          500: '#d4af37', 600: '#b8912a', 700: '#8f6f1d'
+        }
+      },
+      boxShadow: {
+        soft: '0 10px 30px -12px rgba(6,78,59,.28)'
+      }
+    }
+  }
+}
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: #f4faf6;
+    background-image: radial-gradient(circle at 1px 1px, rgba(6,95,70,.07) 1px, transparent 0);
+    background-size: 22px 22px;
+  }
+  @keyframes pop { from { opacity:0; transform: translateY(14px) scale(.96);} to { opacity:1; transform:none; } }
+  .animate-pop { animation: pop .22s cubic-bezier(.2,.9,.3,1.2); }
+  @keyframes fadeUp { from { opacity:0; transform: translateY(8px);} to { opacity:1; transform:none; } }
+  .fade-up { animation: fadeUp .35s ease-out both; }
+  @keyframes slideIn { from { opacity:0; transform: translateY(20px);} to { opacity:1; transform:none; } }
+  .toast-in { animation: slideIn .25s ease-out; }
+  @keyframes glowPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(212,175,55,.4); } 50% { box-shadow: 0 0 0 12px rgba(212,175,55,0); } }
+  .glow-gold { animation: glowPulse 3s ease-in-out infinite; }
+  .juz-card { transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+  .juz-card:hover { transform: translateY(-3px); }
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #ecfdf5; }
+  ::-webkit-scrollbar-thumb { background: #a7f3d0; border-radius: 20px; }
+  ::-webkit-scrollbar-thumb:hover { background: #6ee7b7; }
+  .gold-line { background: linear-gradient(90deg, transparent, #d4af37, #f0d78a, #d4af37, transparent); }
+  .dua-box { background: linear-gradient(135deg, #fdf6e3 0%, #f7e7b4 50%, #ecfdf5 100%); }
+</style>
+</head>
+
+<body class="min-h-screen font-sans text-brand-950 antialiased">
+
+<!-- ============ الشريط العلوي ============ -->
+<header class="sticky top-0 z-40 bg-brand-900/95 backdrop-blur-md text-white shadow-lg shadow-brand-950/20">
+  <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between gap-3">
+    <div class="flex items-center gap-3 min-w-0 cursor-pointer" id="logoBtn">
+      <div class="w-10 h-10 shrink-0 rounded-xl bg-gradient-to-br from-gold-300 to-gold-600 grid place-items-center shadow-md">
+        <svg viewBox="0 0 24 24" fill="none" class="w-6 h-6 text-brand-900" stroke="currentColor" stroke-width="1.8">
+          <path d="M12 6.5S9.5 4 4.5 4v13C9.5 17 12 19.5 12 19.5S14.5 17 19.5 17V4C14.5 4 12 6.5 12 6.5Z" stroke-linejoin="round"/>
+          <path d="M12 6.5v13" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="min-w-0">
+        <h1 class="font-extrabold text-base sm:text-lg leading-tight truncate" id="headerTitle">ختمة القرآن الكريم</h1>
+        <p class="text-[11px] sm:text-xs text-brand-200 truncate" id="headerSub">صدقة على أرواح أحبابنا</p>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <span id="connBadge" class="hidden sm:inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] font-bold bg-brand-800 text-brand-200 border border-brand-700">
+        <span class="w-2 h-2 rounded-full bg-brand-400 animate-pulse"></span>
+        <span id="connText">جارٍ الاتصال…</span>
+      </span>
+      <button id="shareBtn" title="مشاركة الرابط"
+        class="rounded-xl bg-brand-800 hover:bg-brand-700 border border-brand-700 px-3 py-2 text-xs font-bold transition active:scale-95">مشاركة</button>
+      <button id="adminBtn" title="لوحة المشرف"
+        class="rounded-xl bg-brand-800 hover:bg-brand-700 border border-brand-700 w-9 h-9 grid place-items-center text-sm transition active:scale-95">⚙️</button>
+    </div>
+  </div>
+  <div class="h-[2px] gold-line"></div>
+</header>
+
+<main class="mx-auto max-w-6xl px-4 py-6 sm:py-8">
+
+  <!-- ============ عرض 1: قائمة الختمات ============ -->
+  <section id="khatmaListView">
+
+    <!-- قسم الآيات والدعاء للأموات -->
+    <div class="text-center mb-7">
+
+      <p class="font-quran text-gold-600 text-lg sm:text-xl mb-3 leading-loose">
+        ﴿ رَبَّنَا اغْفِرْ لَنَا وَلِإِخْوَانِنَا الَّذِينَ سَبَقُونَا بِالْإِيمَانِ ﴾
+      </p>
+
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-brand-900 mb-3">ختمة القرآن الكريم الجماعية</h2>
+
+      <p class="text-sm sm:text-base text-brand-700/80 max-w-2xl mx-auto mb-6">
+        اختر ختمة للانضمام إليها، أو أنشئ ختمتك الخاصة وشارك رابطها مع أحبابك ليكملوا معك.
+      </p>
+
+      <!-- صندوق الدعاء -->
+      <div class="max-w-3xl mx-auto rounded-3xl dua-box border-2 border-gold-400/70 p-6 sm:p-7 shadow-soft glow-gold">
+
+        <div class="flex items-center justify-center gap-3 mb-4">
+          <span class="text-2xl">🕊️</span>
+          <span class="text-xs sm:text-sm font-extrabold text-gold-700 tracking-widest">صَدَقَةٌ جَارِيَةٌ عَلَى رُوحِ الأَحْبَابِ</span>
+          <span class="text-2xl">🕊️</span>
+        </div>
+
+        <p class="font-quran text-brand-900 text-lg sm:text-2xl leading-loose mb-4">
+          اللَّهُمَّ اجْعَلْ هَذِهِ الْخَتْمَةَ صَدَقَةً عَلَى أَرْوَاحِ أَحْبَابِنَا وَأَمْوَاتِنَا وَأَمْوَاتِ الْمُسْلِمِينَ أَجْمَعِينَ
+        </p>
+
+        <div class="h-[2px] w-32 mx-auto gold-line my-4"></div>
+
+        <div class="space-y-2 text-brand-800/90">
+          <p class="font-quran text-sm sm:text-base leading-loose">
+            «اللَّهُمَّ اغْفِرْ لَهُمْ وَارْحَمْهُمْ، وَعَافِهِمْ وَاعْفُ عَنْهُمْ، وَأَكْرِمْ نُزُلَهُمْ، وَوَسِّعْ مُدْخَلَهُمْ»
+          </p>
+          <p class="font-quran text-sm sm:text-base leading-loose">
+            «اللَّهُمَّ اجْعَلْ قُبُورَهُمْ رَوْضَةً مِنْ رِيَاضِ الْجَنَّةِ، وَلَا تَجْعَلْهَا حُفْرَةً مِنْ حُفَرِ النِّيرَانِ»
+          </p>
+        </div>
+
+        <div class="mt-5 pt-4 border-t border-gold-300/60">
+          <p class="font-quran text-gold-700 text-sm sm:text-base leading-loose">
+            «إِذَا مَاتَ الإِنْسَانُ انْقَطَعَ عَمَلُهُ إِلَّا مِنْ ثَلَاثَةٍ: صَدَقَةٍ جَارِيَةٍ، أَوْ عِلْمٍ يُنْتَفَعُ بِهِ، أَوْ وَلَدٍ صَالِحٍ يَدْعُو لَهُ»
+          </p>
+          <p class="text-[11px] text-gold-600/80 mt-1">— صحيح مسلم</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+      <h3 class="text-lg sm:text-xl font-extrabold text-brand-900">
+        الختمات المتاحة <span class="text-brand-500 text-sm font-bold" id="khatmaCount"></span>
+      </h3>
+      <button id="newKhatmaBtn"
+        class="hidden rounded-xl bg-gradient-to-l from-brand-700 to-brand-800 hover:from-brand-800 hover:to-brand-900 text-white font-extrabold text-sm px-5 py-2.5 transition active:scale-95 shadow-md shadow-brand-900/20">
+        ＋ إنشاء ختمة جديدة
+      </button>
+    </div>
+
+    <div id="khatmaGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+
+    <div id="emptyState" class="hidden rounded-3xl border-2 border-dashed border-brand-200 bg-white/60 p-10 text-center">
+      <div class="text-5xl mb-3">📖</div>
+      <h3 class="font-extrabold text-lg text-brand-900 mb-1">لا توجد ختمات بعد</h3>
+      <p class="text-sm text-brand-600 mb-4">ابدأ أول ختمة الآن — اضغط على زر «إنشاء ختمة جديدة» بالأعلى (متاح للمشرف).</p>
+    </div>
+  </section>
+
+  <!-- ============ عرض 2: تفاصيل الختمة ============ -->
+  <section id="khatmaDetailView" class="hidden">
+    <button id="backBtn" class="mb-4 inline-flex items-center gap-2 rounded-xl bg-white border border-brand-200 hover:bg-brand-50 px-4 py-2 text-sm font-bold text-brand-800 transition active:scale-95">
+      <span>←</span> كل الختمات
+    </button>
+
+    <div class="text-center mb-6">
+
+      <p class="font-quran text-gold-600 text-lg sm:text-xl mb-3 leading-loose">
+        ﴿ رَبَّنَا اغْفِرْ لَنَا وَلِإِخْوَانِنَا الَّذِينَ سَبَقُونَا بِالْإِيمَانِ ﴾
+      </p>
+
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-brand-900 mb-3" id="currentKhatmaName">—</h2>
+
+      <p class="text-sm sm:text-base text-brand-700/80 max-w-2xl mx-auto mb-5">
+        اختر جزءًا، أدخل اسمك، واحجز مكانك. عند إتمام القراءة اضغط «أتممت القراءة» ليتحدّث التقدم للجميع فورًا.
+      </p>
+
+      <div class="max-w-3xl mx-auto rounded-2xl dua-box border-2 border-gold-400/60 p-4 sm:p-5 shadow-soft">
+        <div class="flex items-center justify-center gap-2 mb-2">
+          <span class="text-lg">🕊️</span>
+          <span class="text-[11px] sm:text-xs font-extrabold text-gold-700 tracking-wider">صَدَقَةٌ جَارِيَةٌ عَلَى رُوحِ الأَحْبَابِ</span>
+          <span class="text-lg">🕊️</span>
+        </div>
+        <p class="font-quran text-brand-900 text-base sm:text-lg leading-loose">
+          اللَّهُمَّ اجْعَلْ هَذِهِ الْخَتْمَةَ صَدَقَةً عَلَى أَرْوَاحِ أَحْبَابِنَا وَأَمْوَاتِنَا وَأَمْوَاتِ الْمُسْلِمِينَ أَجْمَعِينَ
+        </p>
+      </div>
+    </div>
+
+    <!-- بطاقة التقدم -->
+    <div class="rounded-3xl bg-white/80 backdrop-blur border border-brand-100 shadow-soft p-4 sm:p-6 mb-6">
+      <div class="flex items-end justify-between mb-3 gap-3">
+        <div>
+          <p class="text-xs font-bold text-brand-600 mb-0.5">نسبة الإتمام</p>
+          <p class="text-2xl sm:text-3xl font-extrabold text-brand-900">
+            <span id="pctText">0</span><span class="text-gold-500">%</span>
+          </p>
+        </div>
+        <p class="text-xs sm:text-sm text-brand-700 font-bold">
+          أُتمّ <span id="doneText" class="text-sky-600">0</span> من 30 جزءًا
+        </p>
+      </div>
+      <div class="h-3 w-full rounded-full bg-brand-100 overflow-hidden">
+        <div id="progressBar" class="h-full w-0 rounded-full bg-gradient-to-l from-gold-400 via-brand-500 to-brand-600 transition-all duration-700 ease-out"></div>
+      </div>
+      <div class="grid grid-cols-3 gap-2 sm:gap-3 mt-4">
+        <div class="rounded-2xl bg-brand-50 border border-brand-100 p-3 text-center">
+          <p class="text-lg sm:text-2xl font-extrabold text-brand-700" id="statAvailable">30</p>
+          <p class="text-[11px] sm:text-xs font-bold text-brand-600">🟢 متاح</p>
+        </div>
+        <div class="rounded-2xl bg-amber-50 border border-amber-100 p-3 text-center">
+          <p class="text-lg sm:text-2xl font-extrabold text-amber-700" id="statReserved">0</p>
+          <p class="text-[11px] sm:text-xs font-bold text-amber-700">🟡 محجوز</p>
+        </div>
+        <div class="rounded-2xl bg-sky-50 border border-sky-100 p-3 text-center">
+          <p class="text-lg sm:text-2xl font-extrabold text-sky-700" id="statRead">0</p>
+          <p class="text-[11px] sm:text-xs font-bold text-sky-700">🔵 اللي تم✓</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-2 mb-5">
+      <button data-filter="all" class="filter-pill">الكل <span class="opacity-60">(30)</span></button>
+      <button data-filter="available" class="filter-pill">متاح <span id="pillAvailable" class="opacity-60">(30)</span></button>
+      <button data-filter="reserved" class="filter-pill">محجوز <span id="pillReserved" class="opacity-60">(0)</span></button>
+      <button data-filter="read" class="filter-pill">اللي تم<span id="pillRead" class="opacity-60">(0)</span></button>
+    </div>
+
+    <div id="grid" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4"></div>
+
+    <div id="completionBox" class="hidden mt-8 rounded-3xl bg-gradient-to-l from-brand-800 to-brand-900 text-white p-6 text-center shadow-soft border border-gold-600/40">
+      <p class="text-3xl mb-2">🎉</p>
+      <h3 class="text-xl sm:text-2xl font-extrabold mb-3 text-gold-300">تمت الختمة بحمد الله</h3>
+      <p class="font-quran text-base sm:text-lg leading-loose max-w-2xl mx-auto text-brand-100 mb-4">
+        اللَّهُمَّ اجْعَلْ هَذِهِ الْخَتْمَةَ صَدَقَةً عَلَى أَرْوَاحِ أَحْبَابِنَا وَأَمْوَاتِنَا وَأَمْوَاتِ الْمُسْلِمِينَ أَجْمَعِينَ
+      </p>
+      <div class="h-[2px] w-32 mx-auto gold-line mb-4"></div>
+      <p class="font-quran text-sm sm:text-base leading-loose max-w-2xl mx-auto text-brand-100">
+        «اللَّهُمَّ ارْحَمْنِي بِالْقُرْآنِ، وَاجْعَلْهُ لِي إِمَامًا وَنُورًا وَهُدًى وَرَحْمَةً»
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="mt-10 border-t border-brand-100 bg-white/60">
+  <div class="mx-auto max-w-6xl px-4 py-6 text-center">
+    <p class="text-xs sm:text-sm text-brand-700/80">«</p>
+    <p class="text-[11px] text-brand-600/60 mt-2"></p>
+  </div>
+</footer>
+
+<!-- ============ النافذة المنبثقة ============ -->
+<div id="modalRoot" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true">
+  <div class="absolute inset-0 bg-brand-950/60 backdrop-blur-sm" data-close></div>
+  <div class="relative h-full grid place-items-center p-4 overflow-y-auto">
+    <div id="modalBox" class="w-full max-w-md rounded-2xl bg-white shadow-2xl border border-brand-100 overflow-hidden animate-pop my-auto"></div>
+  </div>
+</div>
+
+<!-- ============ التنبيهات ============ -->
+<div id="toastWrap" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-[60] flex flex-col gap-2 items-center w-[calc(100%-2rem)] max-w-sm pointer-events-none"></div>
+
+<script type="module">
+/* ============================================================
+   1) الإعدادات
+   ============================================================ */
+const CONFIG = {
+  firebase: {
+    apiKey: "AIzaSyB5o7sMI1qPD8I5NK93V2mT70vcJiU2o0U",
+    authDomain: "khatma-quran-60366.firebaseapp.com",
+    databaseURL: "https://khatma-quran-60366-default-rtdb.firebaseio.com",
+    projectId: "khatma-quran-60366",
+    storageBucket: "khatma-quran-60366.firebasestorage.app",
+    messagingSenderId: "149925347709",
+    appId: "1:149925347709:web:aaa1686267148cbdf3cc14"
+  },
+  adminPassword: "7112006",
+  useAnonymousAuth: true
+};
+
+const FIREBASE_VERSION = "10.12.2";
+const UID_KEY = "khatma_uid";
+const NAME_KEY = "khatma_name";
+const CUR_KEY = "khatma_current";
+const LOCAL_KEY = "khatma_local_v2";
+
+const ORDINALS = [
+  "الأول","الثاني","الثالث","الرابع","الخامس","السادس","السابع","الثامن","التاسع","العاشر",
+  "الحادي عشر","الثاني عشر","الثالث عشر","الرابع عشر","الخامس عشر","السادس عشر","السابع عشر",
+  "الثامن عشر","التاسع عشر","العشرون","الحادي والعشرون","الثاني والعشرون","الثالث والعشرون",
+  "الرابع والعشرون","الخامس والعشرون","السادس والعشرون","السابع والعشرون","الثامن والعشرون",
+  "التاسع والعشرون","الثلاثون"
+];
+
+/* ============================================================
+   2) الحالة والأدوات
+   ============================================================ */
+const state = {
+  uid: null,
+  isAdmin: false,
+  khatmas: {},
+  currentKhatmaId: null,
+  juzData: {},
+  filter: "all"
+};
+
+const $ = (id) => document.getElementById(id);
+
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({
+  "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+}[c]));
+
+function getDeviceUid() {
+  let id = localStorage.getItem(UID_KEY);
+  if (!id) {
+    id = "u_" + Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
+    localStorage.setItem(UID_KEY, id);
+  }
+  return id;
+}
+
+function isFirebaseConfigured() {
+  const c = CONFIG.firebase;
+  return !!c && !c.apiKey.includes("YOUR_") && /^https?:\/\//.test(c.databaseURL || "");
+}
+
+function genId() {
+  return "k_" + Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
+}
+
+function fmtDate(ts) {
+  if (!ts) return "";
+  try {
+    return new Date(ts).toLocaleDateString("ar-EG", { day: "numeric", month: "long", year: "numeric" });
+  } catch { return ""; }
+}
+
+function toast(msg, type = "info") {
+  const colors = {
+    info: "bg-brand-900 text-white",
+    success: "bg-emerald-600 text-white",
+    warn: "bg-amber-500 text-white",
+    error: "bg-red-600 text-white"
+  };
+  const el = document.createElement("div");
+  el.className = "toast-in pointer-events-auto w-full text-center rounded-xl px-4 py-3 text-sm font-bold shadow-lg " + (colors[type] || colors.info);
+  el.textContent = msg;
+  $("toastWrap").appendChild(el);
+  setTimeout(() => {
+    el.style.transition = "opacity .3s, transform .3s";
+    el.style.opacity = "0";
+    el.style.transform = "translateY(10px)";
+    setTimeout(() => el.remove(), 320);
+  }, 3000);
+}
+
+function readUrlKhatmaId() {
+  const h = location.hash.replace(/^#\/?/, "");
+  return h || null;
+}
+
+function writeUrlKhatmaId(id) {
+  if (id) location.hash = "#/" + id;
+  else history.pushState(null, "", location.pathname + location.search);
+}
+
+function getStoredCurrentId() { return localStorage.getItem(CUR_KEY); }
+function setStoredCurrentId(id) {
+  if (id) localStorage.setItem(CUR_KEY, id);
+  else localStorage.removeItem(CUR_KEY);
+}
+
+/* ============================================================
+   3) طبقة التخزين
+   ============================================================ */
+function createLocalStore() {
+  const read = () => {
+    try { return JSON.parse(localStorage.getItem(LOCAL_KEY)) || {}; }
+    catch { return {}; }
+  };
+  const write = (d) => localStorage.setItem(LOCAL_KEY, JSON.stringify(d));
+  const listCbs = [];
+  const juzCbs = {};
+  const emitList = () => { const d = read(); listCbs.forEach(cb => cb(d)); };
+  const emitJuz = (id) => { const d = read(); (juzCbs[id] || []).forEach(cb => cb(d[id]?.juz || {})); };
+
+  window.addEventListener("storage", (e) => {
+    if (e.key === LOCAL_KEY) {
+      emitList();
+      Object.keys(juzCbs).forEach(emitJuz);
+    }
+  });
+
+  return {
+    mode: "local",
+    subscribeKhatmas(cb) { listCbs.push(cb); cb(read()); },
+    subscribeJuz(id, cb) {
+      (juzCbs[id] = juzCbs[id] || []).push(cb);
+      cb(read()[id]?.juz || {});
+    },
+    async createKhatma({ name }) {
+      const id = genId();
+      const d = read();
+      d[id] = { name, createdAt: Date.now(), createdBy: state.uid, juz: {} };
+      write(d); emitList();
+      return id;
+    },
+    async deleteKhatma(id) {
+      const d = read();
+      delete d[id];
+      write(d); emitList(); emitJuz(id);
+    },
+    async resetJuz(id) {
+      const d = read();
+      if (d[id]) {
+        d[id].juz = {};
+        write(d); emitJuz(id); emitList();
+      }
+    },
+    async setJuz(id, n, obj) {
+      const d = read();
+      d[id] = d[id] || { name: "ختمة", createdAt: Date.now(), juz: {} };
+      d[id].juz[n] = obj;
+      write(d); emitJuz(id);
+    },
+    async removeJuz(id, n) {
+      const d = read();
+      if (d[id]?.juz) {
+        delete d[id].juz[n];
+        write(d); emitJuz(id);
+      }
+    }
+  };
+}
+
+async function createFirebaseStore() {
+  const base = "https://www.gstatic.com/firebasejs/" + FIREBASE_VERSION;
+  const [appMod, dbMod, authMod] = await Promise.all([
+    import(base + "/firebase-app.js"),
+    import(base + "/firebase-database.js"),
+    import(base + "/firebase-auth.js")
+  ]);
+
+  const app = appMod.initializeApp(CONFIG.firebase);
+
+  if (CONFIG.useAnonymousAuth) {
+    try {
+      const auth = authMod.getAuth(app);
+      const cred = await authMod.signInAnonymously(auth);
+      if (cred?.user?.uid) state.uid = cred.user.uid;
+    } catch (err) {
+      console.warn("تعذّر الدخول المجهول:", err);
+    }
+  }
+
+  const db = dbMod.getDatabase(app);
+  const rootRef = dbMod.ref(db, "khatmas");
+  const juzRef = (id) => dbMod.ref(db, "khatmas/" + id + "/juz");
+
+  return {
+    mode: "firebase",
+    subscribeKhatmas(cb) {
+      dbMod.onValue(rootRef, (snap) => cb(snap.val() || {}), (err) => {
+        console.error(err);
+        toast("تعذّر الاتصال بقاعدة البيانات", "error");
+      });
+    },
+    subscribeJuz(id, cb) {
+      dbMod.onValue(juzRef(id), (snap) => cb(snap.val() || {}), (err) => {
+        console.error(err);
+        toast("تعذّر تحميل بيانات الختمة", "error");
+      });
+    },
+    async createKhatma({ name }) {
+      const id = genId();
+      await dbMod.set(dbMod.ref(db, "khatmas/" + id), {
+        name, createdAt: Date.now(), createdBy: state.uid, juz: {}
+      });
+      return id;
+    },
+    deleteKhatma: (id) => dbMod.remove(dbMod.ref(db, "khatmas/" + id)),
+    resetJuz: (id) => dbMod.remove(dbMod.ref(db, "khatmas/" + id + "/juz")),
+    setJuz: (id, n, obj) => dbMod.set(dbMod.ref(db, "khatmas/" + id + "/juz/" + n), obj),
+    removeJuz: (id, n) => dbMod.remove(dbMod.ref(db, "khatmas/" + id + "/juz/" + n))
+  };
+}
+
+/* ============================================================
+   4) عرض قائمة الختمات
+   ============================================================ */
+function khatmaCardHTML(id, k) {
+  const juz = k.juz || {};
+  const values = Object.values(juz);
+  const read = values.filter(v => v?.status === "read").length;
+  const reserved = values.filter(v => v?.status === "reserved").length;
+  const pct = Math.round((read / 30) * 100);
+  const isOwner = k.createdBy === state.uid;
+  const isMine = state.isAdmin || isOwner;
+
+  return [
+    '<article data-khatma="' + esc(id) + '" class="khatma-card fade-up rounded-2xl border-2 border-brand-200 bg-white p-5 shadow-soft hover:border-brand-400 hover:shadow-lg transition cursor-pointer flex flex-col">',
+      '<div class="flex items-start justify-between gap-3 mb-3">',
+        '<div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-brand-100 to-brand-200 grid place-items-center text-2xl shrink-0">📖</div>',
+        '<div class="flex-1 min-w-0 text-right">',
+          '<h3 class="font-extrabold text-base sm:text-lg text-brand-900 truncate" title="' + esc(k.name) + '">' + esc(k.name) + '</h3>',
+          '<p class="text-[11px] text-brand-500 mt-0.5">' + fmtDate(k.createdAt) + '</p>',
+        '</div>',
+        isMine ? '<button data-action="delete-khatma" title="حذف الختمة" class="shrink-0 w-8 h-8 rounded-lg bg-red-50 border border-red-200 text-red-600 hover:bg-red-100 transition active:scale-90">🗑</button>' : '',
+      '</div>',
+
+      '<div class="h-2 w-full rounded-full bg-brand-100 overflow-hidden mb-2">',
+        '<div class="h-full rounded-full bg-gradient-to-l from-gold-400 via-brand-500 to-brand-600 transition-all duration-500" style="width:' + pct + '%"></div>',
+      '</div>',
+      '<div class="flex items-center justify-between text-[11px] font-bold text-brand-700 mb-3">',
+        '<span>أُتمّ ' + read + '/30</span>',
+        '<span class="text-gold-600">' + pct + '%</span>',
+      '</div>',
+
+      '<div class="flex items-center gap-2 text-[11px] mb-4">',
+        '<span class="rounded-full bg-brand-100 text-brand-700 px-2 py-0.5 font-bold">🟢 ' + (30 - read - reserved) + '</span>',
+        '<span class="rounded-full bg-amber-100 text-amber-800 px-2 py-0.5 font-bold">🟡 ' + reserved + '</span>',
+        '<span class="rounded-full bg-sky-100 text-sky-800 px-2 py-0.5 font-bold">🔵 ' + read + '</span>',
+      '</div>',
+
+      '<div class="mt-auto flex gap-2">',
+        '<button data-action="open" class="flex-1 rounded-xl bg-brand-700 hover:bg-brand-800 text-white text-xs font-extrabold py-2.5 transition active:scale-[.98]">فتح الختمة</button>',
+        '<button data-action="copy" title="نسخ رابط الختمة" class="rounded-xl bg-brand-50 border border-brand-200 text-brand-800 hover:bg-brand-100 text-xs font-extrabold px-3 py-2.5 transition active:scale-95">🔗</button>',
+      '</div>',
+    '</article>'
+  ].join("");
+}
+
+function renderKhatmaList() {
+  const grid = $("khatmaGrid");
+  const ids = Object.keys(state.khatmas).sort((a, b) =>
+    (state.khatmas[b]?.createdAt || 0) - (state.khatmas[a]?.createdAt || 0)
+  );
+
+  $("khatmaCount").textContent = ids.length ? "(" + ids.length + ")" : "";
+  $("emptyState").classList.toggle("hidden", ids.length > 0);
+  grid.classList.toggle("hidden", ids.length === 0);
+
+  grid.innerHTML = ids.map(id => khatmaCardHTML(id, state.khatmas[id])).join("");
+  $("newKhatmaBtn").classList.toggle("hidden", !state.isAdmin);
+}
+
+/* ============================================================
+   5) عرض تفاصيل الختمة
+   ============================================================ */
+const STATUS_META = {
+  available: {
+    label: "متاح", dot: "bg-brand-500",
+    card: "bg-white border-brand-200 hover:border-brand-400 hover:shadow-soft",
+    badge: "bg-brand-100 text-brand-700",
+    num: "bg-brand-100 text-brand-800"
+  },
+  reserved: {
+    label: "محجوز", dot: "bg-amber-500",
+    card: "bg-amber-50 border-amber-300 hover:border-amber-400 hover:shadow-soft",
+    badge: "bg-amber-200/70 text-amber-900",
+    num: "bg-amber-200 text-amber-900"
+  },
+  read: {
+    label: "تم✓", dot: "bg-sky-500",
+    card: "bg-sky-50 border-sky-300 hover:border-sky-400 hover:shadow-soft",
+    badge: "bg-sky-200/70 text-sky-900",
+    num: "bg-sky-200 text-sky-900"
+  }
+};
+
+function buttonsHTML(n, entry, status, isOwner) {
+  if (status === "available") {
+    return '<button data-action="book" class="w-full rounded-xl bg-brand-700 hover:bg-brand-800 active:scale-[.98] text-white text-xs font-bold py-2.5 transition shadow-sm">حجز الجزء</button>';
+  }
+  if (!isOwner) {
+    const cls = status === "read"
+      ? "border-sky-200 bg-white/70 text-sky-700"
+      : "border-amber-200 bg-white/70 text-amber-700";
+    return '<div class="w-full rounded-xl border border-dashed ' + cls + ' text-[11px] font-bold py-2.5 text-center select-none">' +
+      (status === "read" ? "أتمّه قارئ آخر" : "محجوز لقارئ آخر") + '</div>';
+  }
+  if (status === "reserved") {
+    return [
+      '<div class="flex gap-2">',
+        '<button data-action="read" class="flex-1 rounded-xl bg-sky-600 hover:bg-sky-700 active:scale-[.98] text-white text-xs font-bold py-2.5 transition shadow-sm">أتممت القراءة</button>',
+        '<button data-action="cancel" title="إلغاء الحجز" class="rounded-xl bg-white border border-amber-300 text-amber-800 hover:bg-amber-100 active:scale-[.98] text-xs font-bold px-3 py-2.5 transition">إلغاء</button>',
+      '</div>'
+    ].join("");
+  }
+  return '<button data-action="cancel" class="w-full rounded-xl bg-white border border-sky-300 text-sky-800 hover:bg-sky-100 active:scale-[.98] text-xs font-bold py-2.5 transition">إلغاء</button>';
+}
+
+function cardHTML(n, entry) {
+  const status = entry?.status && STATUS_META[entry.status] ? entry.status : "available";
+  const meta = STATUS_META[status];
+  const isOwner = !!entry && (entry.uid === state.uid || state.isAdmin);
+  const name = entry?.name ? esc(entry.name) : "";
+
+  let body = "";
+  if (status === "available") {
+    body = '<p class="text-[11px] sm:text-xs text-brand-600/90 leading-relaxed">لم يُحجز بعد — </p>';
+  } else if (status === "reserved") {
+    body =
+      '<p class="text-xs sm:text-sm font-extrabold text-amber-900 truncate" title="' + name + '">👤 ' + name + '</p>' +
+      '<p class="text-[10px] sm:text-[11px] text-amber-700/90 mt-0.5">' +
+      (isOwner ? "بانتظار إتمامك للقراءة" : "جارٍ القراءة الآن") + '</p>';
+  } else {
+    body =
+      '<p class="text-xs sm:text-sm font-extrabold text-sky-900 truncate" title="' + name + '">👤 ' + name + '</p>' +
+      '<p class="text-[10px] sm:text-[11px] text-sky-700/90 mt-0.5">تمّت بحمد الله ✓</p>';
+  }
+
+  return [
+    '<article data-juz="' + n + '" class="juz-card fade-up relative rounded-2xl border-2 ' + meta.card + ' p-3 sm:p-4 flex flex-col">',
+      '<div class="flex items-start justify-between gap-2 mb-2.5">',
+        '<div class="flex items-center gap-2 min-w-0">',
+          '<span class="shrink-0 w-8 h-8 rounded-lg grid place-items-center font-extrabold text-xs sm:text-sm ' + meta.num + '">' + n + '</span>',
+          '<h3 class="font-extrabold text-xs sm:text-sm text-brand-900 truncate">الجزء ' + ORDINALS[n - 1] + '</h3>',
+        '</div>',
+        '<span class="shrink-0 inline-flex items-center gap-1 rounded-full px-2 py-1 text-[9px] sm:text-[10px] font-extrabold ' + meta.badge + '">',
+          '<span class="w-1.5 h-1.5 rounded-full ' + meta.dot + '"></span>' + meta.label,
+        '</span>',
+      '</div>',
+      '<div class="flex-1 min-h-[42px] mb-3">' + body + '</div>',
+      buttonsHTML(n, entry, status, isOwner),
+    '</article>'
+  ].join("");
+}
+
+function renderJuzGrid() {
+  const grid = $("grid");
+  const items = [];
+  const counts = { available: 0, reserved: 0, read: 0 };
+
+  for (let n = 1; n <= 30; n++) {
+    const e = state.juzData[n];
+    const st = e?.status && STATUS_META[e.status] ? e.status : "available";
+    counts[st]++;
+    if (state.filter === "all" || state.filter === st) items.push(cardHTML(n, e));
+  }
+
+  grid.innerHTML = items.length
+    ? items.join("")
+    : '<div class="col-span-full rounded-2xl border-2 border-dashed border-brand-200 bg-white/60 p-10 text-center text-brand-600 font-bold">لا توجد أجزاء مطابقة للفلتر المحدد</div>';
+
+  const done = counts.read;
+  const pct = Math.round((done / 30) * 100);
+  $("pctText").textContent = pct;
+  $("doneText").textContent = done;
+  $("progressBar").style.width = pct + "%";
+  $("statAvailable").textContent = counts.available;
+  $("statReserved").textContent = counts.reserved;
+  $("statRead").textContent = counts.read;
+  $("pillAvailable").textContent = "(" + counts.available + ")";
+  $("pillReserved").textContent = "(" + counts.reserved + ")";
+  $("pillRead").textContent = "(" + counts.read + ")";
+  $("completionBox").classList.toggle("hidden", done < 30);
+
+  updateFilterPills();
+}
+
+function updateFilterPills() {
+  document.querySelectorAll(".filter-pill").forEach(btn => {
+    const active = btn.dataset.filter === state.filter;
+    btn.className = "filter-pill rounded-full px-4 py-2 text-xs sm:text-sm font-extrabold transition active:scale-95 " +
+      (active
+        ? "bg-brand-800 text-white shadow-md shadow-brand-900/20"
+        : "bg-white text-brand-700 border border-brand-200 hover:bg-brand-50");
+  });
+}
+
+/* ============================================================
+   6) التنقل
+   ============================================================ */
+function showListView() {
+  $("khatmaListView").classList.remove("hidden");
+  $("khatmaDetailView").classList.add("hidden");
+  $("headerTitle").textContent = "ختمات القرآن الكريم";
+  $("headerSub").textContent = "صدقة على أرواح أحبابنا";
+  document.title = "ختمات القرآن الكريم الجماعية";
+  state.currentKhatmaId = null;
+  state.juzData = {};
+  setStoredCurrentId(null);
+  writeUrlKhatmaId(null);
+}
+
+function openKhatma(id) {
+  const k = state.khatmas[id];
+  if (!k) { toast("الختمة غير موجودة", "error"); return; }
+
+  state.currentKhatmaId = id;
+  setStoredCurrentId(id);
+  writeUrlKhatmaId(id);
+
+  $("khatmaListView").classList.add("hidden");
+  $("khatmaDetailView").classList.remove("hidden");
+  $("currentKhatmaName").textContent = k.name;
+  $("headerTitle").textContent = k.name;
+  $("headerSub").textContent = "ختمة جماعية · 30 جزءًا";
+  document.title = k.name + " — ختمة القرآن";
+
+  state.filter = "all";
+  renderJuzGrid();
+
+  store.subscribeJuz(id, (juz) => {
+    if (state.currentKhatmaId !== id) return;
+    state.juzData = juz || {};
+    renderJuzGrid();
+  });
+}
+
+/* ============================================================
+   7) النوافذ المنبثقة
+   ============================================================ */
+function openModal(html) {
+  $("modalBox").innerHTML = html;
+  $("modalRoot").classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+  setTimeout(() => {
+    const el = $("modalBox").querySelector("input, button");
+    if (el) el.focus();
+  }, 60);
+}
+
+function closeModal() {
+  $("modalRoot").classList.add("hidden");
+  $("modalBox").innerHTML = "";
+  document.body.style.overflow = "";
+}
+
+$("modalRoot").addEventListener("click", (e) => {
+  if (e.target.closest("[data-close]")) closeModal();
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && !$("modalRoot").classList.contains("hidden")) closeModal();
+});
+
+function confirmDialog({ title, text, confirmLabel, danger, onConfirm }) {
+  confirmLabel = confirmLabel || "تأكيد";
+  danger = !!danger;
+  openModal([
+    '<div class="p-5 text-center">',
+      '<div class="mx-auto w-14 h-14 rounded-full grid place-items-center text-2xl mb-3 ' + (danger ? "bg-red-100" : "bg-brand-100") + '">',
+        danger ? "⚠️" : "❓",
+      '</div>',
+      '<h3 class="font-extrabold text-lg mb-1 text-brand-900">' + esc(title) + '</h3>',
+      '<p class="text-sm text-brand-700/80 mb-5 leading-relaxed">' + esc(text) + '</p>',
+      '<div class="flex gap-2">',
+        '<button id="cfYes" class="flex-1 rounded-xl text-white font-extrabold py-3 transition active:scale-[.98] ' + (danger ? "bg-red-600 hover:bg-red-700" : "bg-brand-700 hover:bg-brand-800") + '">',
+          esc(confirmLabel),
+        '</button>',
+        '<button data-close class="flex-1 rounded-xl bg-brand-50 hover:bg-brand-100 text-brand-800 font-extrabold py-3 transition active:scale-[.98]">تراجع</button>',
+      '</div>',
+    '</div>'
+  ].join(""));
+
+  $("cfYes").onclick = async () => {
+    closeModal();
+    await onConfirm();
+  };
+}
+
+function openBookingModal(n) {
+  const savedName = localStorage.getItem(NAME_KEY) || "";
+  openModal([
+    '<form id="bookForm" class="p-5" novalidate>',
+      '<div class="flex items-center gap-3 mb-5">',
+        '<div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-brand-100 to-brand-200 grid place-items-center text-2xl">📖</div>',
+        '<div class="min-w-0">',
+          '<h3 class="font-extrabold text-lg text-brand-900">حجز الجزء ' + ORDINALS[n - 1] + '</h3>',
+          '<p class="text-xs text-brand-600">اكتب اسمك ليظهر لبقية المشاركين</p>',
+        '</div>',
+      '</div>',
+      '<label for="nameInput" class="block text-sm font-extrabold text-brand-800 mb-1.5">الاسم</label>',
+      '<input id="nameInput" type="text" maxlength="30" autocomplete="name" value="' + esc(savedName) + '" placeholder="اكتب اسمك هنا" ',
+        'class="w-full rounded-xl border-2 border-brand-200 px-4 py-3 text-sm font-bold text-brand-900 placeholder:font-normal placeholder:text-brand-400 focus:border-brand-500 focus:ring-4 focus:ring-brand-500/15 transition" />',
+      '<p id="nameErr" class="hidden text-xs font-bold text-red-600 mt-2">الرجاء إدخال اسم صحيح (حرفان على الأقل)</p>',
+      '<div class="mt-4 rounded-xl bg-gold-100/60 border border-gold-300/60 p-3">',
+        '<p class="font-quran text-brand-800 text-xs sm:text-sm leading-loose text-center">',
+          '🕊️ اللَّهُمَّ اجْعَلْ هَذِهِ الْخَتْمَةَ صَدَقَةً عَلَى أَرْوَاحِ أَحْبَابِنَا وَأَمْوَاتِنَا',
+        '</p>',
+      '</div>',
+      '<div class="flex gap-2 mt-4">',
+        '<button type="submit" class="flex-1 rounded-xl bg-brand-700 hover:bg-brand-800 text-white font-extrabold py-3 transition active:scale-[.98] shadow-md shadow-brand-900/20">تأكيد الحجز</button>',
+        '<button type="button" data-close class="rounded-xl bg-brand-50 hover:bg-brand-100 text-brand-800 font-extrabold px-5 py-3 transition active:scale-[.98]">إلغاء</button>',
+      '</div>',
+      '<p class="text-[11px] text-brand-500 text-center mt-3">🔒 لا يمكن لأحد تعديل حجزك أو حذفه غيرك</p>',
+    '</form>'
+  ].join(""));
+
+  const form = $("bookForm");
+  const input = $("nameInput");
+  const err = $("nameErr");
+
+  input.addEventListener("input", () => err.classList.add("hidden"));
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const name = input.value.trim().replace(/\s+/g, " ");
+    if (name.length < 2) {
+      err.classList.remove("hidden");
+      input.focus();
+      return;
+    }
+    localStorage.setItem(NAME_KEY, name);
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = "جارٍ الحجز…";
+
+    try {
+      await store.setJuz(state.currentKhatmaId, n, {
+        status: "reserved", name, uid: state.uid, ts: Date.now()
+      });
+      closeModal();
+      toast("تم حجز الجزء " + ORDINALS[n - 1] + " بنجاح ✅", "success");
+    } catch (error) {
+      console.error(error);
+      toast("تعذّر إتمام الحجز، حاول مرة أخرى", "error");
+      btn.disabled = false;
+      btn.textContent = "تأكيد الحجز";
+    }
+  });
+}
+
+function openCreateKhatmaModal() {
+  const defaultName = "ختمة على أرواح أحبابنا " + new Date().toLocaleDateString("ar-EG", { month: "long", year: "numeric" });
+
+  openModal([
+    '<form id="createKhatmaForm" class="p-5" novalidate>',
+      '<div class="flex items-center gap-3 mb-5">',
+        '<div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-gold-300 to-gold-500 grid place-items-center text-2xl">✨</div>',
+        '<div class="min-w-0">',
+          '<h3 class="font-extrabold text-lg text-brand-900">إنشاء ختمة جديدة</h3>',
+          '<p class="text-xs text-brand-600">اختر اسمًا مميزًا لختمتك</p>',
+        '</div>',
+      '</div>',
+      '<label for="khatmaNameInput" class="block text-sm font-extrabold text-brand-800 mb-1.5">اسم الختمة</label>',
+      '<input id="khatmaNameInput" type="text" maxlength="60" value="' + esc(defaultName) + '" placeholder="مثال: ختمة رمضان 1446" ',
+        'class="w-full rounded-xl border-2 border-brand-200 px-4 py-3 text-sm font-bold text-brand-900 placeholder:font-normal placeholder:text-brand-400 focus:border-brand-500 focus:ring-4 focus:ring-brand-500/15 transition" />',
+      '<p id="khatmaNameErr" class="hidden text-xs font-bold text-red-600 mt-2">الرجاء إدخال اسم (حرفان على الأقل)</p>',
+      '<div class="mt-4 rounded-2xl dua-box border border-gold-300/60 p-3 text-[12px] text-brand-800 leading-relaxed">',
+        '💡 سيتم إنشاء ختمة تحتوي على <b>30 جزءًا</b>، وستكون صدقةً على أرواح أحبابنا وأمواتنا وأموات المسلمين أجمعين.',
+      '</div>',
+      '<div class="flex gap-2 mt-5">',
+        '<button type="submit" class="flex-1 rounded-xl bg-brand-800 hover:bg-brand-900 text-white font-extrabold py-3 transition active:scale-[.98] shadow-md shadow-brand-900/20">إنشاء الختمة</button>',
+        '<button type="button" data-close class="rounded-xl bg-brand-50 hover:bg-brand-100 text-brand-800 font-extrabold px-5 py-3 transition active:scale-[.98]">إلغاء</button>',
+      '</div>',
+    '</form>'
+  ].join(""));
+
+  const form = $("createKhatmaForm");
+  const input = $("khatmaNameInput");
+  const err = $("khatmaNameErr");
+
+  input.addEventListener("input", () => err.classList.add("hidden"));
+  input.select();
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const name = input.value.trim();
+    if (name.length < 2) {
+      err.classList.remove("hidden");
+      input.focus();
+      return;
+    }
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = "جارٍ الإنشاء…";
+
+    try {
+      const id = await store.createKhatma({ name });
+      closeModal();
+      toast("تم إنشاء الختمة بنجاح 🎉", "success");
+      setTimeout(() => { if (state.khatmas[id]) openKhatma(id); }, 250);
+    } catch (error) {
+      console.error(error);
+      toast("تعذّر إنشاء الختمة، حاول مرة أخرى", "error");
+      btn.disabled = false;
+      btn.textContent = "إنشاء الختمة";
+    }
+  });
+}
+
+function openAdminLogin() {
+  openModal([
+    '<form id="adminForm" class="p-5">',
+      '<div class="flex items-center gap-3 mb-5">',
+        '<div class="w-12 h-12 rounded-2xl bg-brand-900 grid place-items-center text-2xl">🔐</div>',
+        '<div>',
+          '<h3 class="font-extrabold text-lg text-brand-900">لوحة المشرف</h3>',
+          '<p class="text-xs text-brand-600">أدخل كلمة المرور للمتابعة</p>',
+        '</div>',
+      '</div>',
+      '<input id="adminPass" type="password" placeholder="كلمة المرور" ',
+        'class="w-full rounded-xl border-2 border-brand-200 px-4 py-3 text-sm font-bold focus:border-brand-500 focus:ring-4 focus:ring-brand-500/15 transition" />',
+      '<p id="adminErr" class="hidden text-xs font-bold text-red-600 mt-2">كلمة المرور غير صحيحة</p>',
+      '<div class="flex gap-2 mt-5">',
+        '<button type="submit" class="flex-1 rounded-xl bg-brand-900 hover:bg-brand-950 text-white font-extrabold py-3 transition active:scale-[.98]">دخول</button>',
+        '<button type="button" data-close class="rounded-xl bg-brand-50 hover:bg-brand-100 text-brand-800 font-extrabold px-5 py-3 transition">إلغاء</button>',
+      '</div>',
+    '</form>'
+  ].join(""));
+
+  $("adminForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    if ($("adminPass").value === CONFIG.adminPassword) {
+      state.isAdmin = true;
+      closeModal();
+      renderKhatmaList();
+      renderJuzGrid();
+      toast("مرحبًا بك أيها المشرف ✅", "success");
+      openAdminPanel();
+    } else {
+      $("adminErr").classList.remove("hidden");
+      $("adminPass").value = "";
+      $("adminPass").focus();
+    }
+  });
+}
+
+function openAdminPanel() {
+  const total = Object.keys(state.khatmas).length;
+  const currentSection = state.currentKhatmaId ? [
+    '<button id="resetCurrentBtn" class="w-full rounded-xl bg-amber-50 border border-amber-200 text-amber-800 hover:bg-amber-100 font-extrabold py-3 transition active:scale-[.98]">',
+      '🔄 إعادة تعيين الختمة الحالية',
+    '</button>',
+    '<button id="deleteCurrentBtn" class="w-full rounded-xl bg-red-50 border border-red-200 text-red-700 hover:bg-red-100 font-extrabold py-3 transition active:scale-[.98]">',
+      '🗑️ حذف الختمة الحالية',
+    '</button>'
+  ].join("") : "";
+
+  openModal([
+    '<div class="p-5">',
+      '<div class="flex items-center gap-3 mb-5">',
+        '<div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-gold-300 to-gold-500 grid place-items-center text-2xl">⚙️</div>',
+        '<div>',
+          '<h3 class="font-extrabold text-lg text-brand-900">مرحبًا أيها المشرف</h3>',
+          '<p class="text-xs text-brand-600">تحكم كامل بالختمات</p>',
+        '</div>',
+      '</div>',
+      '<div class="rounded-2xl bg-brand-50 border border-brand-100 p-4 mb-4 text-sm font-bold text-brand-800">',
+        'عدد الختمات: <span class="text-brand-900">' + total + '</span>',
+      '</div>',
+      '<div class="space-y-2">',
+        '<button id="createKhatmaBtn" class="w-full rounded-xl bg-gradient-to-l from-brand-700 to-brand-800 text-white font-extrabold py-3 transition active:scale-[.98] shadow-md">',
+          '✨ إنشاء ختمة جديدة',
+        '</button>',
+        currentSection,
+        '<button id="logoutAdminBtn" class="w-full rounded-xl bg-brand-50 border border-brand-200 text-brand-800 hover:bg-brand-100 font-extrabold py-3 transition active:scale-[.98]">',
+          '🚪 الخروج من وضع المشرف',
+        '</button>',
+        '<button data-close class="w-full rounded-xl bg-brand-800 text-white hover:bg-brand-900 font-extrabold py-3 transition active:scale-[.98]">',
+          'إغلاق',
+        '</button>',
+      '</div>',
+    '</div>'
+  ].join(""));
+
+  $("createKhatmaBtn").onclick = () => {
+    closeModal();
+    setTimeout(openCreateKhatmaModal, 120);
+  };
+
+  const resetBtn = $("resetCurrentBtn");
+  if (resetBtn) {
+    resetBtn.onclick = () => {
+      const id = state.currentKhatmaId;
+      const name = state.khatmas[id]?.name || "";
+      confirmDialog({
+        title: "إعادة تعيين الختمة",
+        text: "سيتم حذف جميع حجوزات «" + name + "» نهائيًا. هل أنت متأكد؟",
+        confirmLabel: "نعم، احذف الكل",
+        danger: true,
+        onConfirm: async () => {
+          try {
+            await store.resetJuz(id);
+            toast("تمت إعادة تعيين الختمة", "success");
+          } catch (e) {
+            console.error(e);
+            toast("تعذّرت إعادة التعيين", "error");
+          }
+        }
+      });
+    };
+  }
+
+  const delBtn = $("deleteCurrentBtn");
+  if (delBtn) {
+    delBtn.onclick = () => {
+      const id = state.currentKhatmaId;
+      const name = state.khatmas[id]?.name || "";
+      confirmDialog({
+        title: "حذف الختمة",
+        text: "سيتم حذف «" + name + "» بكل بياناتها نهائيًا. هل أنت متأكد؟",
+        confirmLabel: "نعم، احذفها",
+        danger: true,
+        onConfirm: async () => {
+          try {
+            await store.deleteKhatma(id);
+            showListView();
+            toast("تم حذف الختمة", "success");
+          } catch (e) {
+            console.error(e);
+            toast("تعذّر حذف الختمة", "error");
+          }
+        }
+      });
+    };
+  }
+
+  $("logoutAdminBtn").onclick = () => {
+    state.isAdmin = false;
+    closeModal();
+    renderKhatmaList();
+    renderJuzGrid();
+    toast("تم الخروج من وضع المشرف");
+  };
+}
+
+/* ============================================================
+   8) الأحداث
+   ============================================================ */
+let store = null;
+
+$("khatmaGrid").addEventListener("click", async (e) => {
+  const card = e.target.closest("[data-khatma]");
+  if (!card) return;
+  const id = card.dataset.khatma;
+  const k = state.khatmas[id];
+  if (!k) return;
+
+  const actionBtn = e.target.closest("button[data-action]");
+  if (actionBtn) {
+    const action = actionBtn.dataset.action;
+
+    if (action === "open") { openKhatma(id); return; }
+
+    if (action === "copy") {
+      const url = location.origin + location.pathname + "#/" + id;
+      try {
+        await navigator.clipboard.writeText(url);
+        toast("تم نسخ رابط الختمة ✅", "success");
+      } catch { toast(url, "info"); }
+      return;
+    }
+
+    if (action === "delete-khatma") {
+      const isOwner = k.createdBy === state.uid;
+      if (!isOwner && !state.isAdmin) { toast("غير مصرّح", "warn"); return; }
+      confirmDialog({
+        title: "حذف الختمة",
+        text: "سيتم حذف «" + k.name + "» بكل بياناتها. هل أنت متأكد؟",
+        confirmLabel: "نعم، احذفها",
+        danger: true,
+        onConfirm: async () => {
+          try {
+            await store.deleteKhatma(id);
+            if (state.currentKhatmaId === id) showListView();
+            toast("تم حذف الختمة", "success");
+          } catch (err) {
+            console.error(err);
+            toast("تعذّر الحذف", "error");
+          }
+        }
+      });
+      return;
+    }
+  } else {
+    openKhatma(id);
+  }
+});
+
+$("grid").addEventListener("click", async (e) => {
+  const btn = e.target.closest("button[data-action]");
+  if (!btn) return;
+  const card = btn.closest("[data-juz]");
+  if (!card) return;
+
+  const n = Number(card.dataset.juz);
+  const entry = state.juzData[n];
+  const isOwner = !!entry && (entry.uid === state.uid || state.isAdmin);
+  const khatmaId = state.currentKhatmaId;
+  if (!khatmaId) return;
+
+  const action = btn.dataset.action;
+  btn.disabled = true;
+
+  try {
+    if (action === "book") {
+      btn.disabled = false;
+      openBookingModal(n);
+      return;
+    }
+
+    if (!isOwner) {
+      toast("لا يمكنك تعديل حجز شخص آخر", "warn");
+      btn.disabled = false;
+      return;
+    }
+
+    if (action === "read") {
+      await store.setJuz(khatmaId, n, { ...entry, status: "read", ts: Date.now() });
+      toast("بارك الله فيك! تمّ الجزء " + ORDINALS[n - 1] + " وجُعل صدقةً على أرواح أحبابنا 🕊️", "success");
+    }
+
+    if (action === "cancel") {
+      confirmDialog({
+        title: "إلغاء الحجز",
+        text: "سيتم تحرير الجزء " + ORDINALS[n - 1] + " ليتمكن غيرك من حجزه. هل تريد المتابعة؟",
+        confirmLabel: "نعم، ألغِ الحجز",
+        danger: true,
+        onConfirm: async () => {
+          try {
+            await store.removeJuz(khatmaId, n);
+            toast("تم إلغاء الحجز", "success");
+          } catch (err) {
+            console.error(err);
+            toast("تعذّر إلغاء الحجز", "error");
+          }
+        }
+      });
+    }
+  } catch (err) {
+    console.error(err);
+    toast("حدث خطأ غير متوقع", "error");
+  } finally {
+    btn.disabled = false;
+  }
+});
+
+document.querySelectorAll(".filter-pill").forEach(btn => {
+  btn.addEventListener("click", () => {
+    state.filter = btn.dataset.filter;
+    renderJuzGrid();
+  });
+});
+
+$("shareBtn").addEventListener("click", async () => {
+  const url = location.href;
+  const title = state.currentKhatmaId && state.khatmas[state.currentKhatmaId]
+    ? state.khatmas[state.currentKhatmaId].name
+    : "ختمات القرآن الكريم الجماعية";
+
+  const data = {
+    title,
+    text: "شارك معنا في ختمة القرآن صدقةً على أرواح أحبابنا 🕊️",
+    url
+  };
+
+  try {
+    if (navigator.share) {
+      await navigator.share(data);
+      return;
+    }
+    await navigator.clipboard.writeText(url);
+    toast("تم نسخ رابط الصفحة ✅", "success");
+  } catch {
+    toast("انسخ الرابط من شريط العنوان", "info");
+  }
+});
+
+$("adminBtn").addEventListener("click", () => {
+  if (state.isAdmin) openAdminPanel();
+  else openAdminLogin();
+});
+
+$("newKhatmaBtn").addEventListener("click", openCreateKhatmaModal);
+$("backBtn").addEventListener("click", showListView);
+$("logoBtn").addEventListener("click", showListView);
+
+window.addEventListener("hashchange", () => {
+  const id = readUrlKhatmaId();
+  if (!id) {
+    if (state.currentKhatmaId) showListView();
+    return;
+  }
+  if (id !== state.currentKhatmaId) openKhatma(id);
+});
+
+/* ============================================================
+   9) الإقلاع
+   ============================================================ */
+function updateConnBadge() {
+  const badge = $("connBadge");
+  const text = $("connText");
+  if (store.mode === "firebase") {
+    badge.className = "hidden sm:inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] font-bold bg-emerald-900/50 text-emerald-200 border border-emerald-700/50";
+    text.textContent = "مزامنة مباشرة";
+  } else {
+    badge.className = "hidden sm:inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] font-bold bg-amber-900/40 text-amber-200 border border-amber-700/50";
+    text.textContent = "وضع تجريبي (محلي)";
+  }
+}
+
+async function init() {
+  state.uid = getDeviceUid();
+
+  try {
+    if (isFirebaseConfigured()) {
+      store = await createFirebaseStore();
+    } else {
+      store = createLocalStore();
+      console.info("%cوضع تجريبي: لم يتم ضبط Firebase.", "color:#b8912a;font-weight:bold");
+    }
+  } catch (err) {
+    console.warn("فشل Firebase، استخدام الوضع المحلي:", err);
+    store = createLocalStore();
+    toast("تعذّر الاتصال بقاعدة البيانات — تحوّلنا للوضع التجريبي", "warn");
+  }
+
+  updateConnBadge();
+
+  store.subscribeKhatmas((all) => {
+    state.khatmas = all || {};
+    renderKhatmaList();
+
+    if (!state.currentKhatmaId) {
+      const wanted = readUrlKhatmaId() || getStoredCurrentId();
+      if (wanted && state.khatmas[wanted]) openKhatma(wanted);
+      else if (wanted && !state.khatmas[wanted]) showListView();
+    } else if (!state.khatmas[state.currentKhatmaId]) {
+      showListView();
+      toast("تم حذف الختمة الحالية", "warn");
+    }
+  });
+
+  window.addEventListener("online", () => toast("تم استعادة الاتصال ✅", "success"));
+  window.addEventListener("offline", () => toast("انقطع الاتصال بالإنترنت", "warn"));
+}
+
+init();
+</script>
+</body>
+</html>
